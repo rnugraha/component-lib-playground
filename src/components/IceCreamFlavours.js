@@ -23,27 +23,33 @@ const FLAVOURS_2 = [
 let MY_FAV_FLAV = [
     {label: 'Caramel', value: 'caramel'},
     {label: 'Cookies and Cream', value: 'cookiescream'},
-    {label: 'Chocolate', value: 'chocolate'},
 ];
 
 const IceCreamFlavour = React.createClass({
 
     getInitialState() {
         return {
+            isOptionsChanged: false,
             options: FLAVOURS_2,
-            value: [],
+            value: MY_FAV_FLAV,
         };
     },
 
     handleFlavourOne() {
         this.setState(
-            {options: FLAVOURS_1}
+            {
+                options: FLAVOURS_1,
+                isOptionsChanged: true,
+            }
         );
     },
 
     handleFlavourTwo() {
         this.setState(
-            {options: FLAVOURS_2}
+            {
+                options: FLAVOURS_2,
+                isOptionsChanged: true,
+            }
         );
     },
 
@@ -54,20 +60,29 @@ const IceCreamFlavour = React.createClass({
         });
     },
 
+    handleOptionsChange(oldOptions, newOptions) {
+        console.log('handleOptionsChange..', oldOptions, newOptions);
+        this.setState(
+            {isOptionsChanged: false}
+        );
+    },
+
     render() {
-        const {options, value} = this.state;
+        const {isOptionsChanged, options, value} = this.state;
         return (
             <div>
                 <h1> My favorite ice cream flavours </h1>
                 <CheckedSelect
+                    isOptionsChanged={isOptionsChanged}
                     onChange={this.handleLogChange}
+                    onOptionsChange={this.handleOptionsChange}
                     options={options}
                     placeholder="Select your favourite(s)"
                     value={value}
                 />
                 <br/>
-                <button onClick={this.handleFlavourOne}>Show Flavour 1</button>
-                <button onClick={this.handleFlavourTwo}>Show Flavour 2</button>
+                <button onClick={this.handleFlavourOne}>Show FlavourI (4)</button>
+                <button onClick={this.handleFlavourTwo}>Show FlavourII (3)</button>
             </div>
         );
     }
