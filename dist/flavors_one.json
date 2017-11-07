@@ -1,0 +1,6 @@
+[
+  {"label": "Chocolate", "value": "chocolate", "disabled": true},
+  {"label": "Vanilla", "value": "vanilla"},
+  {"label": "Strawberry", "value": "strawberry"},
+  {"label": "Caramel", "value": "caramel"}
+]

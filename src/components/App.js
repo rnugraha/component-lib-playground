@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import '../assets/stylesheets/base.scss';
 import IceCreamFlavours from "./IceCreamFlavours";
+import IceCreamFlavoursAsync from "./IceCreamFlavoursAsync";
 
 const App = ({name}) => {
     const containerStyle = {
@@ -12,6 +13,7 @@ const App = ({name}) => {
         <div>
             <div style={containerStyle}>
                 <IceCreamFlavours />
+                <IceCreamFlavoursAsync />
             </div>
         </div>
     );
