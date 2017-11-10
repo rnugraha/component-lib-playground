@@ -25,15 +25,20 @@ let MY_FAV_FLAV = [
     {label: 'Cookies and Cream', value: 'cookiescream'},
 ];
 
-const IceCreamFlavour = React.createClass({
+class IceCreamFlavour extends React.Component {
 
-    getInitialState() {
-        return {
-            isOptionsChanged: false,
+    constructor(props, context) {
+        super(props, context)
+
+        this.handleLogChange = this.handleLogChange.bind(this);
+        this.handleFlavourOne = this.handleFlavourOne.bind(this);
+        this.handleFlavourTwo = this.handleFlavourTwo.bind(this);
+
+        this.state = {
             options: FLAVOURS_2,
             value: MY_FAV_FLAV,
         };
-    },
+    }
 
     handleFlavourOne() {
         this.setState(
@@ -42,7 +47,7 @@ const IceCreamFlavour = React.createClass({
                 isOptionsChanged: true,
             }
         );
-    },
+    }
 
     handleFlavourTwo() {
         this.setState(
@@ -51,21 +56,14 @@ const IceCreamFlavour = React.createClass({
                 isOptionsChanged: true,
             }
         );
-    },
+    }
 
     handleLogChange(value) {
         console.log('Selected value: ', value);
         this.setState({
             value: value
         });
-    },
-
-    handleOptionsChange(oldOptions, newOptions) {
-        console.log('handleOptionsChange..', oldOptions, newOptions);
-        this.setState(
-            {isOptionsChanged: false}
-        );
-    },
+    }
 
     render() {
         const {isOptionsChanged, options, value} = this.state;
@@ -73,9 +71,7 @@ const IceCreamFlavour = React.createClass({
             <div>
                 <h1> My favorite ice cream flavours </h1>
                 <CheckedSelect
-                    isOptionsChanged={isOptionsChanged}
                     onChange={this.handleLogChange}
-                    onOptionsChange={this.handleOptionsChange}
                     options={options}
                     placeholder="Select your favourite(s)"
                     value={value}
@@ -86,7 +82,7 @@ const IceCreamFlavour = React.createClass({
             </div>
         );
     }
-});
+}
 
 export default IceCreamFlavour;
 

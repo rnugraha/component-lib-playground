@@ -12,20 +12,26 @@ let MY_FAV_FLAV = [
     {label: 'Cookies and Cream', value: 'cookiescream'},
 ];
 
-const IceCreamFlavourAsync = React.createClass({
+class IceCreamFlavourAsync extends React.Component {
 
-    getInitialState() {
-        return {
+    constructor(props, context) {
+        super(props, context);
+
+        this.handleLogChange = this.handleLogChange.bind(this);
+        this.getAjaxFlavourOne = this.getAjaxFlavourOne.bind(this);
+        this.getAjaxFlavourTwo = this.getAjaxFlavourTwo.bind(this);
+
+        this.state = {
             value: MY_FAV_FLAV,
         };
-    },
+    }
 
     handleLogChange(value) {
         console.log('Selected value: ', value);
         this.setState({
             value: value
         });
-    },
+    }
 
     getAjaxFlavourOne(input) {
         return fetch(`./flavors_one.json`)
@@ -34,7 +40,7 @@ const IceCreamFlavourAsync = React.createClass({
             }).then((json) => {
                 return { options: json };
             });
-    },
+    }
 
     getAjaxFlavourTwo(input) {
         return fetch(`./flavors_one.json`)
@@ -43,7 +49,7 @@ const IceCreamFlavourAsync = React.createClass({
             }).then((json) => {
                 return { options: json };
             });
-    },
+    }
 
     render() {
 
@@ -63,7 +69,7 @@ const IceCreamFlavourAsync = React.createClass({
             </div>
         );
     }
-});
+}
 
 export default IceCreamFlavourAsync;
 
