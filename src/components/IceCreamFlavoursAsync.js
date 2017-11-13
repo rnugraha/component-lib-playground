@@ -22,7 +22,7 @@ class IceCreamFlavourAsync extends React.Component {
         this.getAjaxFlavourTwo = this.getAjaxFlavourTwo.bind(this);
 
         this.state = {
-            value: MY_FAV_FLAV,
+            value: [],
         };
     }
 
@@ -51,6 +51,27 @@ class IceCreamFlavourAsync extends React.Component {
             });
     }
 
+    /**
+     * get options async
+     */
+    getGitHubUsers(input) {
+        return fetch(
+            'https://api.github.com/search/repositories?q=stars:%3E1+language:javascript&sort=stars&order=desc&type=Repositories'
+        )
+            .then(response => {
+                return response.json();
+            })
+            .then(json => {
+                let githubUsers = json.items.map(user => {
+                    return {
+                        label: user.full_name,
+                        value: user.name
+                    };
+                });
+                return { options: githubUsers };
+            });
+    }
+
     render() {
 
         const {value} = this.state;
@@ -60,7 +81,7 @@ class IceCreamFlavourAsync extends React.Component {
                 <h1> My favorite ice cream flavours in Async call </h1>
                 <CheckedSelect
                     async
-                    loadOptions={this.getAjaxFlavourOne}
+                    loadOptions={this.getGitHubUsers}
                     onChange={this.handleLogChange}
                     placeholder="Select your favourite(s)"
                     value={value}
