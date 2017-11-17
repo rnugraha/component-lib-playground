@@ -72,16 +72,30 @@ class IceCreamFlavourAsync extends React.Component {
             });
     }
 
+    getOptions (input, callback) {
+        setTimeout(function() {
+            callback(null, {
+                options: [
+                    { value: 'one', label: 'One' },
+                    { value: 'two', label: 'Two' }
+                ],
+                // CAREFUL! Only set this to true when there are no more options,
+                // or more specific queries will not be sent to the server.
+                complete: true
+            });
+        }, 5000);
+    };
+
     render() {
 
         const {value} = this.state;
 
         return (
             <div>
-                <h1> My favorite ice cream flavours in Async call </h1>
+                <h1> My favorite GitHub Users</h1>
                 <CheckedSelect
                     async
-                    loadOptions={this.getGitHubUsers}
+                    loadOptions={this.getOptions}
                     onChange={this.handleLogChange}
                     placeholder="Select your favourite(s)"
                     value={value}
