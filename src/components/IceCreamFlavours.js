@@ -50,7 +50,6 @@ class IceCreamFlavour extends React.Component {
         this.setState(
             {
                 options: FLAVOURS_1,
-                isOptionsChanged: true,
             }
         );
     }
@@ -59,7 +58,6 @@ class IceCreamFlavour extends React.Component {
         this.setState(
             {
                 options: FLAVOURS_2,
-                isOptionsChanged: true,
             }
         );
     }
