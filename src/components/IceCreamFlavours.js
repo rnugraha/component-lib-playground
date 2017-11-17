@@ -110,7 +110,7 @@ class IceCreamFlavour extends React.Component {
                 <button onClick={this.handleFlavourTwo}>Show FlavourII (3)</button>
                 <br/>
                 <button onClick={this.handleMyFlavourA}>Change values to Coconut and Choco Cream</button>
-                <button onClick={this.handleMyFlavourB}>Change values constructor Pepermint</button>
+                <button onClick={this.handleMyFlavourB}>Change values to Pepermint</button>
 
             </div>
         );
